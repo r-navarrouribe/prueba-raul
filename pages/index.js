@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Submit from "../Components/Submit";
 import styles from "../styles/Home.module.css";
 
@@ -6,13 +7,13 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Prueba ténica Zizeron</title>
+        <title>Prueba Técnica Zizeron</title>
         <meta name="description" content="Prueba técnica para Zizeron" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/faviconn.ico" />
       </Head>
 
       <header className={styles.header}>
-        <h1 className={styles.title}>Prueba ténica Zizeron</h1>
+        <h1 className={styles.title}>Prueba Técnica Zizeron</h1>
       </header>
 
       <main className={styles.main}>
