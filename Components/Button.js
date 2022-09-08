@@ -8,27 +8,29 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Button({ buttonType, loading, clickHandler }) {
+export default function Button({ buttonState, clickHandler }) {
   return (
     <button
       type="button"
       className={`${styles.mainButton} ${
-        buttonType === "SUBMIT"
+        buttonState === "default" || buttonState === "loading"
           ? styles.submitButton
-          : buttonType === "SUCCESS"
+          : buttonState === "success"
           ? styles.successButton
           : styles.errorButton
-      } ${loading && styles.loading}`}
+      } ${buttonState === "loading" && styles.loading}`}
       onClick={clickHandler}
     >
-      {buttonType}
+      {buttonState === "default" || buttonState === "loading"
+        ? "SUBMIT"
+        : buttonState.toUpperCase()}
       {"\u00a0\u00a0"}
       {
         <FontAwesomeIcon
           icon={
-            buttonType === "SUBMIT"
+            buttonState === "default" || buttonState === "loading"
               ? faChevronRight
-              : buttonType === "SUCCESS"
+              : buttonState === "success"
               ? faCheck
               : faXmark
           }
@@ -40,7 +42,6 @@ export default function Button({ buttonType, loading, clickHandler }) {
 }
 
 Button.propTypes = {
-  buttonType: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired,
+  buttonState: PropTypes.string.isRequired,
   clickHandler: PropTypes.func.isRequired,
 };
