@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>Prueba Técnica Zizeron</title>
         <meta name="description" content="Prueba técnica para Zizeron" />
-        <link rel="icon" href="/faviconn.ico" />
+        <link rel="icon" href="/zizeron.ico" />
       </Head>
 
       <header className={styles.header}>

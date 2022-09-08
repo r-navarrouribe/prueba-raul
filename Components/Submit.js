@@ -13,13 +13,15 @@ export default function Submit() {
   const [loading, setLoading] = useState(false);
 
   // Button handlers
-  const clickHandler = () => {
+  async function clickHandler() {
     setLoading(true);
-    setTimeout(() => {
-      setButtonType(getBoolean() === true ? "SUCCESS" : "ERROR");
-      setLoading(false);
-    }, 1000);
-  };
+    try {
+      setButtonType((await getBoolean()) === true ? "SUCCESS" : "ERROR");
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
+  }
 
   const restartHandler = () => {
     setButtonType("SUBMIT");
