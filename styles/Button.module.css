@@ -1,0 +1,40 @@
+.mainButton {
+  height: 60px;
+  width: 213px;
+
+  border-radius: 10px;
+  border: none;
+
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "lato";
+  color: #fff;
+  margin-bottom: 25px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submitButton {
+  background: linear-gradient(to left, #21223e 50%, #4b4f93 50%) right;
+  background-size: 200%;
+  transition: all 1s linear;
+}
+
+.loading {
+  background-position: left;
+}
+
+.successButton {
+  background-color: #0c8d87;
+}
+
+.errorButton {
+  background-color: #ad3d3d;
+}
+
+.icon {
+  font-size: 25px;
+}

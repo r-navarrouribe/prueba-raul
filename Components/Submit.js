@@ -1,33 +1,44 @@
 import { useState } from "react";
 import getBoolean from "../services/getBoolean";
 import Button from "./Button";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function Submit() {
-  //constant declaration
-  const [successOrError, setSuccessOrError] = useState();
+  // Constant declarations
+  const [buttonType, setButtonType] = useState("SUBMIT");
   const [loading, setLoading] = useState(false);
 
-  // Handler declaration
+  // Button handlers
   const clickHandler = () => {
     setLoading(true);
     setTimeout(() => {
-      setSuccessOrError(getBoolean());
+      setButtonType(getBoolean() === true ? "SUCCESS" : "ERROR");
       setLoading(false);
     }, 1000);
   };
+
+  const restartHandler = () => {
+    setButtonType("SUBMIT");
+  };
+
   return (
-    <div>
-      {!loading && successOrError === undefined && (
-        <Button title="submit" clickHandler={clickHandler} />
-      )}
-      {loading && <Button title="loading" clickHandler={clickHandler} />}
-      {!loading &&
-        successOrError !== undefined &&
-        (successOrError ? (
-          <Button title="success" clickHandler={clickHandler} />
-        ) : (
-          <Button title="error" clickHandler={clickHandler} />
-        ))}
-    </div>
+    <>
+      <div>
+        <Button
+          buttonType={buttonType}
+          loading={loading}
+          clickHandler={clickHandler}
+        />
+      </div>
+      <button type="button" onClick={restartHandler}>
+        Restart
+        {"\u00a0\u00a0"}
+        {<FontAwesomeIcon icon={faRotateLeft} />}
+      </button>
+    </>
   );
 }
